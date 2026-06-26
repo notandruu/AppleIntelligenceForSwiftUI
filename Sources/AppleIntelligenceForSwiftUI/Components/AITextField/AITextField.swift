@@ -56,7 +56,7 @@ public struct AITextField: View {
             .padding(10)
             .background(
                 RoundedRectangle(cornerRadius: 25)
-                    .fill(Color(uiColor: .systemBackground))
+                    .fill(.thinMaterial)
             )
             .cornerRadius(25)
             .background(

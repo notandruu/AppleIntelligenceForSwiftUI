@@ -5,6 +5,7 @@
 //  Created by Alessio Rubicini on 17/06/25.
 //
 
+#if os(iOS)
 import SwiftUI
 
 struct ChatMessage: Identifiable {
@@ -201,4 +202,5 @@ struct TypingIndicator: View {
 
 #Preview {
     ChatPromptExample()
-} 
+}
+#endif 

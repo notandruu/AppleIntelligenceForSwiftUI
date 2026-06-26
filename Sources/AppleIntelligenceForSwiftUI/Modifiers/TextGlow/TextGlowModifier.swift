@@ -12,6 +12,14 @@ private struct TextGlowModifier: ViewModifier {
     let colors: [Color]
     let duration: Double
     
+    private var screenWidth: CGFloat {
+        #if os(iOS) || os(tvOS)
+        UIScreen.main.bounds.width
+        #else
+        NSScreen.main?.frame.width ?? 1440
+        #endif
+    }
+
     func body(content: Content) -> some View {
         ZStack {
             // The gradient that flows under the text
@@ -20,8 +28,8 @@ private struct TextGlowModifier: ViewModifier {
                 startPoint: .leading,
                 endPoint: .trailing
             )
-            .frame(width: UIScreen.main.bounds.width * 8.9, height: 400)
-            .offset(x: animate ? UIScreen.main.bounds.width * -3.4 : UIScreen.main.bounds.width * 4)
+            .frame(width: screenWidth * 8.9, height: 400)
+            .offset(x: animate ? screenWidth * -3.4 : screenWidth * 4)
             .animation(
                 .linear(duration: duration).repeatForever(autoreverses: false),
                 value: animate
